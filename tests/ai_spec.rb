@@ -1,7 +1,5 @@
 
 
-$LOAD_PATH << '../lib/'
-
 require 'ai'
 require 'board'
 require 'game'
@@ -41,8 +39,8 @@ describe AI do
 			bender = AI.new('Bender')
 			c3p0 = AI.new('C3P0')
 
-			# I'd say 2,000 games is probably enough...
-			for i in 0..2000
+			# I'd say 1,000 games is probably enough...
+			for i in 0..1000
 				print display[display_counter]
 				display_counter = display_counter + 1 > 3 ? 0 : display_counter + 1
 				board = Board.new
@@ -52,7 +50,7 @@ describe AI do
 				orig_stdout = $stdout
 				$stdout = devnull
 				game.run
-				expect(game.drawGame).to( eq(true), 
+				expect(game.drawGame?).to( eq(true), 
 				lambda {
 					msg = "Game #{i} was not a draw."
 					if game.xWins

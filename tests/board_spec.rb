@@ -1,4 +1,4 @@
-#$LOAD_PATH << './lib/'
+
 
 require 'board'
 
@@ -30,26 +30,26 @@ describe Board do
 	describe '#empty' do
 		it "Should return true for a new board." do
 			board = Board.new
-			expect(board.empty).to eq(true)
+			expect(board.empty?).to eq(true)
 		end
 		it "Should return false after a piece has been dropped." do
 			board = Board.new
 			board.dropPiece( 4 )
-			expect(board.empty).to eq(false)
+			expect(board.empty?).to eq(false)
 		end
 	end
 
 	describe '#full' do
 		it "Should return true only for a full board." do
 			board = Board.new
-			expect(board.full).to eq(false)
+			expect(board.full?).to eq(false)
 
 			for i in drawGameMoves
 				board.dropPiece i
 				if( i == 0 )
-					expect(board.full).to eq(true)
+					expect(board.full?).to eq(true)
 				else
-					expect(board.full).to eq(false)
+					expect(board.full?).to eq(false)
 				end
 			end
 		end
