@@ -1,0 +1,27 @@
+The Strategy
+
+1)  Take a win
+2)  Take an opponent's win
+3)  Take a 2win spot
+4)  Take an opponent's 2win spot; If there are multiple 2win spots, then take an even number over an odd.
+
+	Take a 1win spot?  For this situation:
+		X1O
+		OXX
+		49O
+
+	Where 1 and 9 can be seen as better than 4.
+	However, an opponent would have to let us win in this situation.
+	Our computer AI as describe here would not let X win.
+	So let's not implement this.  It is fine if our AI takes 4 in this situation.
+
+5)  If opponent has 0 pieces, take 8.
+6)  If opponent has at least 1 piece, take 5.
+		i)   If 5 is taken, take 8.
+		ii)  If 8 is taken, take 2.
+		iii) If 2 is taken, take a random spot.
+
+
+
+
+The "2win spot" idea might have ended up being a nice strategy, but I didn't actually go this way.
