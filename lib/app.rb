@@ -22,12 +22,12 @@ class App
 		playerX = @human_is_X ? Human.new('Fry') : AI.new('Bender')
 		playerO = @human_is_X ? AI.new('Bender') : Human.new('Fry')
 
-		@game = Game.new(
+		game = Game.new(
 			playerX,
 			playerO,
 			Board.new
 		)
-		@game.run
+		game.run
 
 		puts "Would you like to play again?  (y/n)"
 		choice = STDIN.gets.chomp
