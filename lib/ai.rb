@@ -19,18 +19,18 @@ class AI < Player
 		end
 
 		board.dropPiece spot
-		return true
+		true
 	end
 
 
 
 	private
 	def getWinningMove( board )
-		return searchLine board, board.getCurrentPlayerPieces
+		searchLine board, board.getCurrentPlayerPieces
 	end
 
 	def getBlockingMove( board )
-		return searchLine board, board.getOtherPlayerPieces
+		searchLine board, board.getOtherPlayerPieces
 	end
 
 	def searchLine( board, pieces )
@@ -47,9 +47,8 @@ pieces:
 			EOS
 		end
 		# We can't have a winning move without at least 1 open spot and 2 pieces.
-		if( pieces.length < 2 || open.length < 1 )
-			return nil
-		end
+		return nil if( pieces.length < 2 || open.length < 1 )
+
 		for a in 0..pieces.length-2
 			for b in a+1..pieces.length-1
 				for c in 0..open.length-1

@@ -35,19 +35,19 @@ EOS
 	end
 
 	def spotOpen?( spot )
-		return @board[spot].is_a? Integer
+		@board[spot].is_a? Integer
 	end
 
 	def getXPieces
-		return @board.each_index.select{ |i| @board[i] == 'X' }
+		@board.each_index.select{ |i| @board[i] == 'X' }
 	end
 
 	def getOPieces
-		return @board.each_index.select{ |i| @board[i] == 'O' }
+		@board.each_index.select{ |i| @board[i] == 'O' }
 	end
 
 	def getAllPieces
-		return @board.each_index.select{ |i| @board[i].is_a? String }
+		@board.each_index.select{ |i| @board[i].is_a? String }
 	end
 
 
@@ -55,53 +55,53 @@ EOS
 		if getXPieces().count > getOPieces().count
 			return getOPieces
 		end
-		return getXPieces
+		getXPieces
 	end
 
 	def getOtherPlayerPieces
 		if getXPieces().count > getOPieces().count
 			return getXPieces
 		end
-		return getOPieces
+		getOPieces
 	end
 
 	def getOpenSpots
-		return @board.each_index.select{ |i| @board[i].is_a? Integer}
+		@board.each_index.select{ |i| @board[i].is_a? Integer}
 	end
 
 	def xWins?
 		if win( getXPieces )
 			return true
 		end
-		return false
+		false
 	end
 
 	def oWins?
 		if win( getOPieces )
 			return true
 		end
-		return false
+		false
 	end
 
 	def drawGame?
 		if not xWins? and not oWins? and full?
 			return true
 		end
-		return false
+		false
 	end
 
 	def full?
 		if getOpenSpots( ).count < 1
 			return true
 		end
-		return false
+		false
 	end
 
 	def empty?
 		if getOpenSpots( ).count == 9
 			return true
 		end
-		return false
+		false
 	end
 
 
@@ -110,7 +110,7 @@ EOS
 
 	private
 	def win( pieces )
-		if( pieces.length < 3 ) then return false end
+		return false if pieces.length < 3
 
 		# We search for any 3 integers that total to 12 in an array of arbitrary length.
 		# This approach might be a bit extreme, but it should always work.
@@ -127,7 +127,7 @@ EOS
 			end
 		end
 
-		return false
+		false
 	end
 
 end

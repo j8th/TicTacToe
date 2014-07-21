@@ -37,15 +37,15 @@ class Game
 	end
 
 	def drawGame?
-		return @board.drawGame?
+		@board.drawGame?
 	end
 
 	def xWins?
-		return @board.xWins?
+		@board.xWins?
 	end
 
 	def oWins?
-		return @board.oWins?
+		@board.oWins?
 	end
 
 end
