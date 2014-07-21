@@ -10,18 +10,15 @@ class Human < Player
 		board.draw
 		puts "What is your move?"
 		i = STDIN.gets.to_i
-		
-		unless i.between?(0, 8)
-			puts 'Please enter an integer between 0 and 8.'
-			move(board)
+
+		if board.getOpenSpots.include? i
+			board.dropPiece(i)
+		else
+			puts 'Please select an open space on the board.'
+			return move( board )
 		end
 
-		unless board.dropPiece(i)
-			puts 'That space is already taken.  Please select another.'
-			move(board)
-		end
-
-		return true
+		true
 	end
 
 end
