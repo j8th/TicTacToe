@@ -55,6 +55,30 @@ describe Board do
 		end
 	end
 
+	# TODO:  What should this method and the next return if the game is over?
+	#     (A player has won or it is a draw game)  False?
+	describe '#playerX_is_up?' do
+		it 'Should return true if it is PlayerX\'s turn and false otherwise.' do
+			board = Board.new
+			expect(board.playerX_is_up?).to eq true
+			board.dropPiece(7)
+			expect(board.playerX_is_up?).to eq false
+			board.dropPiece(4)
+			expect(board.playerX_is_up?).to eq true
+		end
+	end
+
+	describe '#playerO_is_up?' do
+		it 'Should return true if it is PlayerO\'s turn and false otherwise.' do
+			board = Board.new
+			expect(board.playerO_is_up?).to eq false
+			board.dropPiece(7)
+			expect(board.playerO_is_up?).to eq true
+			board.dropPiece(4)
+			expect(board.playerO_is_up?).to eq false
+		end
+	end
+
 	describe '#xWins' do
 		it 'Should return true only if PlayerX won the board.' do
 			board = Board.new

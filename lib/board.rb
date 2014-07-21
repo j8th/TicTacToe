@@ -69,6 +69,14 @@ EOS
 		@board.each_index.select{ |i| @board[i].is_a? Integer}
 	end
 
+	def playerX_is_up?
+		getXPieces().count == getOPieces().count
+	end
+
+	def playerO_is_up?
+		not playerX_is_up?
+	end
+
 	def xWins?
 		if win( getXPieces )
 			return true
