@@ -4,8 +4,8 @@ require 'board'
 
 describe Board do
 	drawGameMoves = [7, 4, 1, 2, 6, 5, 3, 8, 0]
-	xWinsGameMoves = [7, 4, 1, 2, 6, 5, 3, 8, 0]
-	oWinsGameMoves = [7, 4, 1, 2, 6, 5, 3, 8, 0]
+	xWinsGameMoves = [7, 4, 1, 0, 8, 5, 3]
+	oWinsGameMoves = [7, 4, 1, 2, 6, 5, 0, 3]
 
 	describe '#dropPiece' do
 		it "Should alternate pieces appropriately.  X, then O, then X, etc." do
@@ -57,13 +57,27 @@ describe Board do
 
 	describe '#xWins' do
 		it 'Should return true only if PlayerX won the board.' do
+			board = Board.new
+			expect(board.xWins?).to eq false
 
+			xWinsGameMoves.each do |i|
+				board.dropPiece(i)
+				expect(board.xWins?).to eq false unless i == xWinsGameMoves.last
+				expect(board.xWins?).to eq true if i == xWinsGameMoves.last
+			end
 		end
 	end
 
 	describe '#oWins' do
 		it 'Should return true only if PlayerO won the board.' do
+			board = Board.new
+			expect(board.oWins?).to eq false
 
+			oWinsGameMoves.each do |i|
+				board.dropPiece(i)
+				expect(board.oWins?).to eq false unless i == oWinsGameMoves.last
+				expect(board.oWins?).to eq true if i == oWinsGameMoves.last
+			end
 		end
 	end
 
