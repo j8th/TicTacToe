@@ -22,20 +22,18 @@ class Game
 
 		if @board.xWins?
 			puts "Congratulations to #{@playerX.name} for defeating #{@playerO.name}!"
-			puts "Final: "
-			@board.draw
 		elsif @board.oWins?
 			puts "Congratulations to #{@playerO.name} for defeating #{@playerX.name}!"
-			puts "Final: "
-			@board.draw
 		elsif @board.drawGame?
 			puts "Game is a draw."
-			puts "Final: "
-			@board.draw
 		else
 			@playerup = @playerup == @playerX ? @playerO : @playerX
 			run
+			return
 		end
+
+		puts "Final: "
+		@board.draw
 	end
 
 	def drawGame?
