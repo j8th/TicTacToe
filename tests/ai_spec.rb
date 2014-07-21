@@ -23,14 +23,37 @@ describe AI do
 		end
 	end
 
+	# General characteristics of the AI that we test.
+	# These are not unit tests of any particular method defined in the AI class, but rather complete,
+	#     behavioral tests of how the AI should perform in a game.
+	# These are tests of behavior of the class as a whole, not of a particular interface.
 	describe 'Generally speaking' do
 		
-		# It may not be a great idea to spit out a display like we do here,
-		#     but in this particular project it's fine.
-		# Might even be a good idea, because we indicate what's going on while we wait...
+		# This is the main and most important test of this group.
+		# 
+		# The AI should play perfectly, meaning it should never lose a game.
+		# We test that here.
+		#
+		#
+		#
+		# Here's how...
+		#
+		# Two AI's playing against one another should always result in a draw game.
+		#     (This is because that's how TicTacToe works - two players with perfect skill
+		#      playing against one another will always draw.)
+		# 
+		# We test this here by actually creating two AI's and throwing them into a series of games
+		#     against each other.  After each game has ended, we assert that the game resulted in a draw.
+		#     The test fails if one of the games does NOT end in a draw.
 		#
 		# Note that this is not foolproof.
 		# It may be possible that two AI's would never defeat each other, but would lose to a human opponent.
+		#
+		#
+		#
+		# As an aside, it may not be a great idea to spit out a display like we do here,
+		#     but in this particular project it's fine.
+		# Might even be a good idea, because we indicate what's going on while we wait...
 		it 'Should never lose.  (With two AI\'s, this means every game should be a draw.)' do
 			display = ['|', '/', '-', '\\']
 			display_counter = 0
@@ -78,7 +101,18 @@ describe AI do
 
 
 
-		# If we find a game the AI loses, we record the moves here and make sure the AI does not lose it again.
+		# As noted above, testing two AI's against each other is not foolproof.
+		# If we find a game against a human opponent that the AI loses,
+		#     we record the moves here and make sure the AI does not lose it again.
+		# 
+		# We advance the board to the state the AI lost, and give that board to two AI's.
+		# The game should come out a draw.
+		# Note that this is also not foolproof, but it's probably a good start, and a good way
+		#     to have a game the AI lost in an automated test.
+		#
+		# Note that at the moment, this test does not actually do anything,
+		#     because we do not have any such games to test that the AI lost against a human.
+		# If we do find such games, they will go in the games_ai_lost array.
 		it 'Should not fail any of these pre-recorded matches against a human.' do
 			games_ai_lost = [
 				# The AI would still fail both of the below games.
