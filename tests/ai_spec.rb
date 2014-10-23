@@ -27,7 +27,7 @@ describe AI do
 	# These are not unit tests of any particular method defined in the AI class, but rather complete,
 	#     behavioral tests of how the AI should perform in a game.
 	# These are tests of behavior of the class as a whole, not of a particular interface.
-	describe 'Generally speaking' do
+	describe 'AI vs AI' do
 		
 		# This is the main and most important test of this group.
 		# 

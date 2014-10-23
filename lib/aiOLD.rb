@@ -35,17 +35,7 @@ class AI < Player
 
 	def searchLine( board, pieces )
 		open = board.getOpenSpots
-		if $DEBUG
-			puts <<-EOS
-DEBUG: 
-============
-open: 
-#{open}
-pieces: 
-#{pieces}
-============
-			EOS
-		end
+
 		# We can't have a winning move without at least 1 open spot and 2 pieces.
 		return nil if( pieces.length < 2 || open.length < 1 )
 

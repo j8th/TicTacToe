@@ -2,25 +2,18 @@
 
 class App
 	def initialize
-		puts "Welcome to Tic Tac Toe!"
-		puts "Who is human, X or O?  "
-		choice = STDIN.gets.chomp.downcase
-		case choice
-		when 'x'
-			@human_is_X = true
-		when 'o'
-			@human_is_X = false
-		else
-			puts "We'll just make you X..."
-			@human_is_X = true
-		end
+		UI.msg("Welcome to Tic Tac Toe!")
+		choice = UI.prompt(
+			"Who is human, #{Board::PLAYER_ONE_TOKEN} or #{Board::PLAYER_TWO_TOKEN}?",
+			[Board::PLAYER_ONE_TOKEN, Board::PLAYER_TWO_TOKEN]
+		)
+		@human_is_X = choice == Board::PLAYER_ONE_TOKEN ? true : false
 	end
 
 	def run
-		puts ""
+		UI.msg("")
 		
-		playerX = @human_is_X ? Human.new('Fry') : AI.new('Bender')
-		playerO = @human_is_X ? AI.new('Bender') : Human.new('Fry')
+		playerX, playerO = create_players()
 
 		game = Game.new(
 			playerX,
@@ -29,10 +22,21 @@ class App
 		)
 		game.run
 
-		puts "Would you like to play again?  (y/n)"
-		choice = STDIN.gets.chomp
-		if choice.downcase == 'y'
-			run
+		choice = UI.prompt("Would you like to play again?  (y/n)", ['y', 'n'])
+		run() if choice == 'y'
+	end
+
+	private
+	def create_players
+		human = Human.new('Fry')
+		computer = AI.new('Bender')
+		if @human_is_X
+			player_x = human
+			player_o = computer
+		else
+			player_x = computer
+			player_o = human
 		end
+		[player_x, player_o]
 	end
 end

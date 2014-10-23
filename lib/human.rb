@@ -8,17 +8,8 @@ class Human < Player
 		return false if board.full?
 
 		board.draw
-		puts "What is your move?"
-		i = STDIN.gets.to_i
-
-		if board.getOpenSpots.include? i
-			board.dropPiece(i)
-		else
-			puts 'Please select an open space on the board.'
-			return move( board )
-		end
-
-		true
+		choice = UI.prompt("What is your move?", board.getOpenSpots)
+		board.dropPiece(choice)
 	end
 
 end

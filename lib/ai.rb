@@ -7,11 +7,10 @@ class AI < Player
 	def move( board )
     	return false if board.full?
 
-    	puts "Thinking..."
+		UI.msg("Thinking...")
     	minimax( board )
 
 		board.dropPiece @choice
-		true
 	end
 
 
@@ -30,7 +29,6 @@ class AI < Player
 			scores[spot] = minimax(board_copy)
 		end
 
-		puts scores if $DEBUG
 		if board.playerX_is_up?
 			max = scores.max_by{|k,v| v}
 			@choice = max[0]

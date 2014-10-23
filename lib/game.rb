@@ -1,4 +1,5 @@
 
+require_relative 'ui'
 
 class Game
 
@@ -13,26 +14,26 @@ class Game
 
 
 	def run
-		piece = @playerup == @playerX ? 'X' : 'O'
-		puts "#{@playerup.name} (#{piece}) is up."
+		piece = @playerup == @playerX ? Board::PLAYER_ONE_TOKEN : Board::PLAYER_TWO_TOKEN
+		UI.msg("#{@playerup.name} (#{piece}) is up.")
 
 		@playerup.move @board
 		# This blank line makes the game output a bit easier to read.
-		puts ""
+		UI.msg("")
 
 		if @board.xWins?
-			puts "Congratulations to #{@playerX.name} for defeating #{@playerO.name}!"
+			UI.msg("Congratulations to #{@playerX.name} for defeating #{@playerO.name}!")
 		elsif @board.oWins?
-			puts "Congratulations to #{@playerO.name} for defeating #{@playerX.name}!"
+			UI.msg("Congratulations to #{@playerO.name} for defeating #{@playerX.name}!")
 		elsif @board.drawGame?
-			puts "Game is a draw."
+			UI.msg("Game is a draw.")
 		else
 			@playerup = @playerup == @playerX ? @playerO : @playerX
 			run
 			return
 		end
 
-		puts "Final: "
+		UI.msg("Final: ")
 		@board.draw
 	end
 
