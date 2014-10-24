@@ -1,11 +1,11 @@
 class UI
   # Display a text message to the user.
-  def self.msg( string )
+  def self.msg(string)
     puts string
   end
 
   # Display a text message to the user
-  def self.prompt( instruction_message, choices )
+  def self.prompt(instruction_message, choices)
     puts instruction_message
     input = STDIN.gets.chomp
     return input if choices.include? input

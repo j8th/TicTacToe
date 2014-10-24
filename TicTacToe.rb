@@ -9,6 +9,6 @@ require_relative 'lib/ui'
 
 
 
-app = App.new( )
+app = App.new()
 app.run
 

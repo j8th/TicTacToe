@@ -3,7 +3,7 @@ require_relative 'ui'
 
 class Game
 
-  def initialize( playerX, playerO, board )
+  def initialize(playerX, playerO, board)
     @playerX = playerX
     @playerO = playerO
     @board = board

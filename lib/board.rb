@@ -26,10 +26,10 @@ EOS
     UI.msg(string)
   end
 
-  def dropPiece( spot )
-    if spotOpen?( spot )
+  def dropPiece(spot)
+    if spotOpen?(spot)
       p = PLAYER_ONE_TOKEN
-      if getXPieces( ).count > getOPieces( ).count
+      if getXPieces().count > getOPieces().count
         then p = PLAYER_TWO_TOKEN
       end
       @board[spot] = p
@@ -38,7 +38,7 @@ EOS
     false
   end
 
-  def spotOpen?( spot )
+  def spotOpen?(spot)
     @board[spot].is_a? Integer
   end
 
@@ -82,14 +82,14 @@ EOS
   end
 
   def xWins?
-    if win( getXPieces )
+    if win(getXPieces)
       return true
     end
     false
   end
 
   def oWins?
-    if win( getOPieces )
+    if win(getOPieces)
       return true
     end
     false
@@ -103,14 +103,14 @@ EOS
   end
 
   def full?
-    if getOpenSpots( ).count < 1
+    if getOpenSpots().count < 1
       return true
     end
     false
   end
 
   def empty?
-    if getOpenSpots( ).count == 9
+    if getOpenSpots().count == 9
       return true
     end
     false
@@ -121,7 +121,7 @@ EOS
 
 
   private
-  def win( pieces )
+  def win(pieces)
     return false if pieces.length < 3
 
     # We search for any 3 integers that total to 12 in an array of arbitrary length.
@@ -132,7 +132,7 @@ EOS
     for a in 0..pieces.length-3
       for b in a+1..pieces.length-2
         for c in b+1..pieces.length-1
-          if( pieces[a] + pieces[b] + pieces[c] == WINNING_SCORE )
+          if(pieces[a] + pieces[b] + pieces[c] == WINNING_SCORE)
             return true;
           end
         end

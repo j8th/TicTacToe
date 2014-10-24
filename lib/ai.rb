@@ -4,11 +4,11 @@ require_relative 'player'
 
 class AI < Player
 
-  def move( board )
+  def move(board)
     return false if board.full?
 
     UI.msg("Thinking...")
-    minimax( board )
+    minimax(board)
 
     board.dropPiece @choice
   end
@@ -16,7 +16,7 @@ class AI < Player
 
 
   private
-  def minimax( board )
+  def minimax(board)
     return 1 if board.xWins?
     return -1 if board.oWins?
     return 0 if board.drawGame?
@@ -24,7 +24,7 @@ class AI < Player
     scores = {}
 
     board.getOpenSpots.each do |spot|
-      board_copy = Marshal.load( Marshal.dump(board) )
+      board_copy = Marshal.load(Marshal.dump(board))
       board_copy.dropPiece(spot)
       scores[spot] = minimax(board_copy)
     end

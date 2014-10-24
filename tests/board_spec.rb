@@ -34,7 +34,7 @@ describe Board do
     end
     it "Should return false after a piece has been dropped." do
       board = Board.new
-      board.dropPiece( 4 )
+      board.dropPiece(4)
       expect(board.empty?).to eq(false)
     end
   end
@@ -46,7 +46,7 @@ describe Board do
 
       for i in drawGameMoves
         board.dropPiece i
-        if( i == 0 )
+        if(i == 0)
           expect(board.full?).to eq(true)
         else
           expect(board.full?).to eq(false)

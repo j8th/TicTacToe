@@ -75,7 +75,7 @@ describe AI do
         orig_stdout = $stdout
         $stdout = devnull
         game.run
-        expect(game.drawGame?).to( eq(true), 
+        expect(game.drawGame?).to(eq(true), 
         lambda {
           msg = "Game #{i} was not a draw."
           if game.xWins
@@ -119,7 +119,7 @@ describe AI do
       games_ai_lost = [
         # The AI would still fail both of the below games.
         # However, we have changed its 4th move so that in a 3, 4, 0 situation, it will always take 6.
-        #   ( And if you "rotate" the situation, it takes the correct corresponding spot; [0, 4, 1] yields 2, for instance. )
+        #   (And if you "rotate" the situation, it takes the correct corresponding spot; [0, 4, 1] yields 2, for instance.)
         # Thus, neither of the games below could ever happen.
         #[3, 4, 0, 2, 6, 7, 1], # AI randomly chose 7.  If I choose 1 to block, then I have two ways to get 3 in a row and have won.
         #[3, 4, 0, 2, 6] # AI took 8.  Right now it chooses randomly in this situation, which is not okay.
@@ -128,7 +128,7 @@ describe AI do
       c3p0 = AI.new('C3P0')
 
       # Hide game output.
-      $stdout = File.new( '/dev/null', 'w' )
+      $stdout = File.new('/dev/null', 'w')
 
       for moves in games_ai_lost
         for i in 0..100
@@ -140,7 +140,7 @@ describe AI do
             bender,
             c3p0,
             board
-          )
+         )
           game.run
           expect(game.drawGame).to eq true
         end

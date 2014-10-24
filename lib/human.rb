@@ -4,7 +4,7 @@ require_relative 'player'
 
 class Human < Player
 
-  def move( board )
+  def move(board)
     return false if board.full?
 
     board.draw

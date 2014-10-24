@@ -6,7 +6,7 @@ class App
     choice = UI.prompt(
       "Who is human, #{Board::PLAYER_ONE_TOKEN} or #{Board::PLAYER_TWO_TOKEN}?",
       [Board::PLAYER_ONE_TOKEN, Board::PLAYER_TWO_TOKEN]
-    )
+   )
     @human_is_X = choice == Board::PLAYER_ONE_TOKEN ? true : false
   end
 
@@ -19,7 +19,7 @@ class App
       playerX,
       playerO,
       Board.new
-    )
+   )
     game.run
 
     choice = UI.prompt("Would you like to play again?  (y/n)", ['y', 'n'])
