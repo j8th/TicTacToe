@@ -65,7 +65,7 @@ describe AI do
       # I'd say 1,000 games is probably enough...
       # Until we make the minimax algorithm more efficient, these games take a long time to play...
       #   don't set this higher than 10.
-      for i in 0..10
+      for i in 0..1
         print display[display_counter]
         display_counter = display_counter + 1 > 3 ? 0 : display_counter + 1
         board = Board.new
