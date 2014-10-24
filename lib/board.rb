@@ -26,8 +26,8 @@ EOS
     UI.msg(string)
   end
 
-  def dropPiece(spot)
-    if spotOpen?(spot)
+  def drop_piece(spot)
+    if spot_open?(spot)
       p = PLAYER_ONE_TOKEN
       if getXPieces().count > getOPieces().count
         then p = PLAYER_TWO_TOKEN
@@ -38,7 +38,7 @@ EOS
     false
   end
 
-  def spotOpen?(spot)
+  def spot_open?(spot)
     @board[spot].is_a? Integer
   end
 
@@ -50,26 +50,26 @@ EOS
     @board.each_index.select{ |i| @board[i] == PLAYER_TWO_TOKEN }
   end
 
-  def getAllPieces
+  def get_all_pieces
     @board.each_index.select{ |i| @board[i].is_a? String }
   end
 
 
-  def getCurrentPlayerPieces
+  def get_current_player_pieces
     if getXPieces().count > getOPieces().count
       return getOPieces
     end
     getXPieces
   end
 
-  def getOtherPlayerPieces
+  def get_other_player_pieces
     if getXPieces().count > getOPieces().count
       return getXPieces
     end
     getOPieces
   end
 
-  def getOpenSpots
+  def get_open_spots
     @board.each_index.select{ |i| @board[i].is_a? Integer}
   end
 
@@ -81,36 +81,36 @@ EOS
     not playerX_is_up?
   end
 
-  def xWins?
+  def x_wins?
     if win(getXPieces)
       return true
     end
     false
   end
 
-  def oWins?
+  def o_wins?
     if win(getOPieces)
       return true
     end
     false
   end
 
-  def drawGame?
-    if not xWins? and not oWins? and full?
+  def draw_game?
+    if not x_wins? and not o_wins? and full?
       return true
     end
     false
   end
 
   def full?
-    if getOpenSpots().count < 1
+    if get_open_spots().count < 1
       return true
     end
     false
   end
 
   def empty?
-    if getOpenSpots().count == 9
+    if get_open_spots().count == 9
       return true
     end
     false

@@ -6,14 +6,14 @@ require 'game'
 
 describe AI do
 
-  # describe '#getRandomMove' do
+  # describe '#get_random_move' do
   #   it 'Should return a random integer between 0 and 8.' do
   #     ai = AI.new('Bender')
   #     board = Board.new
 
   #     seen_numbers = []
   #     for i in 0..10000
-  #       int = ai.send(:getRandomMove, board)
+  #       int = ai.send(:get_random_move, board)
   #       if not seen_numbers.include? int
   #         seen_numbers << int
   #       end
@@ -75,12 +75,12 @@ describe AI do
         orig_stdout = $stdout
         $stdout = devnull
         game.run
-        expect(game.drawGame?).to(eq(true), 
+        expect(game.draw_game?).to(eq(true), 
         lambda {
           msg = "Game #{i} was not a draw."
-          if game.xWins
+          if game.x_wins
             msg += "  #{bender.name} (X) won."
-          elsif game.oWins
+          elsif game.o_wins
             msg += "  #{c3p0.name} (O) won."
           else
             msg += "  Something very wrong happened."
@@ -134,7 +134,7 @@ describe AI do
         for i in 0..100
           board = Board.new
           for m in moves
-            board.dropPiece m
+            board.drop_piece m
           end
           game = Game.new(
             bender,
@@ -142,7 +142,7 @@ describe AI do
             board
          )
           game.run
-          expect(game.drawGame).to eq true
+          expect(game.draw_game).to eq true
         end
       end
     end

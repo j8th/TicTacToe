@@ -21,11 +21,11 @@ class Game
     # This blank line makes the game output a bit easier to read.
     UI.msg("")
 
-    if @board.xWins?
+    if @board.x_wins?
       UI.msg("Congratulations to #{@playerX.name} for defeating #{@playerO.name}!")
-    elsif @board.oWins?
+    elsif @board.o_wins?
       UI.msg("Congratulations to #{@playerO.name} for defeating #{@playerX.name}!")
-    elsif @board.drawGame?
+    elsif @board.draw_game?
       UI.msg("Game is a draw.")
     else
       @playerup = @playerup == @playerX ? @playerO : @playerX
@@ -37,16 +37,16 @@ class Game
     @board.draw
   end
 
-  def drawGame?
-    @board.drawGame?
+  def draw_game?
+    @board.draw_game?
   end
 
-  def xWins?
-    @board.xWins?
+  def x_wins?
+    @board.x_wins?
   end
 
-  def oWins?
-    @board.oWins?
+  def o_wins?
+    @board.o_wins?
   end
 
 end

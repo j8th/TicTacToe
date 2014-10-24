@@ -8,8 +8,8 @@ class Human < Player
     return false if board.full?
 
     board.draw
-    choice = UI.prompt("What is your move?", board.getOpenSpots)
-    board.dropPiece(choice)
+    choice = UI.prompt("What is your move?", board.get_open_spots)
+    board.drop_piece(choice)
   end
 
 end

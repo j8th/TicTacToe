@@ -10,22 +10,22 @@ class AI < Player
     UI.msg("Thinking...")
     minimax(board)
 
-    board.dropPiece @choice
+    board.drop_piece @choice
   end
 
 
 
   private
   def minimax(board)
-    return 1 if board.xWins?
-    return -1 if board.oWins?
-    return 0 if board.drawGame?
+    return 1 if board.x_wins?
+    return -1 if board.o_wins?
+    return 0 if board.draw_game?
 
     scores = {}
 
-    board.getOpenSpots.each do |spot|
+    board.get_open_spots.each do |spot|
       board_copy = Marshal.load(Marshal.dump(board))
-      board_copy.dropPiece(spot)
+      board_copy.drop_piece(spot)
       scores[spot] = minimax(board_copy)
     end
 

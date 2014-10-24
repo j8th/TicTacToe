@@ -31,12 +31,12 @@ class App
     human = Human.new('Fry')
     computer = AI.new('Bender')
     if @human_is_X
-      player_x = human
-      player_o = computer
+      playerX = human
+      playerO = computer
     else
-      player_x = computer
-      player_o = human
+      playerX = computer
+      playerO = human
     end
-    [player_x, player_o]
+    [playerX, playerO]
   end
 end
