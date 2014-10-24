@@ -140,7 +140,7 @@ describe AI do
             bender,
             c3p0,
             board
-         )
+          )
           game.run
           expect(game.draw_game).to eq true
         end
