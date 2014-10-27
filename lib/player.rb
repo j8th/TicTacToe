@@ -14,7 +14,7 @@ class Player
   # Public Methods
 
   def draw
-    UI.msg("Name: #{@name}")
+    @ui.msg("Name: #{@name}")
   end
 
 
@@ -23,7 +23,7 @@ class Player
 
   # The player makes a move on the board.
   # This method drops a piece on the board (the board object is actually changed).
-  def move(board)
+  def move(board, ui)
     raise NotImplementedError, "Implement this method in a child class."
   end
 

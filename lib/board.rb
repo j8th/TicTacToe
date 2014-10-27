@@ -16,16 +16,6 @@ class Board
 
 
 
-  def draw
-    string = <<-EOS
-The Board:
-#{@board[7]} #{@board[0]} #{@board[5]}
-#{@board[2]} #{@board[4]} #{@board[6]}
-#{@board[3]} #{@board[8]} #{@board[1]}
-EOS
-    UI.msg(string)
-  end
-
   def drop_piece(spot)
     if spot_open?(spot)
       p = PLAYER_ONE_TOKEN
@@ -71,6 +61,10 @@ EOS
 
   def get_open_spots
     @board.each_index.select{ |i| @board[i].is_a? Integer}
+  end
+
+  def to_array
+    @board
   end
 
   def playerX_is_up?

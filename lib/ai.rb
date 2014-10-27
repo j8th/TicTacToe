@@ -4,10 +4,10 @@ require_relative 'player'
 
 class AI < Player
 
-  def move(board)
+  def move(board, ui)
     return false if board.full?
 
-    UI.msg("Thinking...")
+    ui.msg("Thinking...")
     minimax(board)
 
     board.drop_piece @choice

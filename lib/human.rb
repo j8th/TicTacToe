@@ -4,11 +4,11 @@ require_relative 'player'
 
 class Human < Player
 
-  def move(board)
+  def move(board, ui)
     return false if board.full?
 
-    board.draw
-    choice = UI.prompt("What is your move?", board.get_open_spots)
+    ui.draw_board(board)
+    choice = ui.prompt("What is your move?", board.get_open_spots)
     board.drop_piece(choice)
   end
 

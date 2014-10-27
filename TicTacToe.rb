@@ -6,9 +6,13 @@ require_relative 'lib/ai'
 require_relative 'lib/board'
 require_relative 'lib/app'
 require_relative 'lib/ui'
+require_relative 'lib/console'
 
 
 
-app = App.new()
+ui = Console.new
+# Possibly in the future?
+# ui = Web.new
+app = App.new(ui)
 app.run
 

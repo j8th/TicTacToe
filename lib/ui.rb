@@ -1,18 +1,19 @@
 class UI
+  # "Interface" method.
   # Display a text message to the user.
-  def self.msg(string)
-    puts string
+  def msg(string)
+    raise NotImplementedError, "Implement this method in a child class."
   end
 
+  # "Interface" method.
   # Display a text message to the user
-  def self.prompt(instruction_message, choices)
-    puts instruction_message
-    input = STDIN.gets.chomp
-    return input if choices.include? input
-    return input.to_i if choices.include? input.to_i
-    return input.downcase if choices.include? input.downcase
-    return input.upcase if choices.include? input.upcase
-    puts 'That is not a valid option.'
-    return prompt(instruction_message, choices)
+  def prompt(instruction_message, choices)
+    raise NotImplementedError, "Implement this method in a child class."
+  end
+
+  # "Interface" method.
+  # Draw the board.
+  def draw_board(board)
+    raise NotImplementedError, "Implement this method in a child class."
   end
 end

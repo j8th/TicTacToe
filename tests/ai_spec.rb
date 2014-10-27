@@ -3,6 +3,8 @@
 require 'ai'
 require 'board'
 require 'game'
+require 'mocks/mockui'
+require 'console'
 
 describe AI do
 
@@ -69,30 +71,30 @@ describe AI do
         print display[display_counter]
         display_counter = display_counter + 1 > 3 ? 0 : display_counter + 1
         board = Board.new
-        game = Game.new(bender, c3p0, board)
-        # We don't want to see the output from each of their games...
-        devnull = File.new('/dev/null', 'w')
-        orig_stdout = $stdout
-        $stdout = devnull
+        game = Game.new(bender, c3p0, board, MockUI.new)
         game.run
         expect(game.draw_game?).to(eq(true), 
         lambda {
           msg = "Game #{i} was not a draw."
-          if game.x_wins
+          if game.x_wins?
             msg += "  #{bender.name} (X) won."
-          elsif game.o_wins
+          elsif game.o_wins?
             msg += "  #{c3p0.name} (O) won."
           else
             msg += "  Something very wrong happened."
           end
           msg += "\n"
+
+          # Kind of a wonky hack, but maybe okay in tests...
+          orig_stdout = $stdout
           $stdout = StringIO.new
-          board.draw
+          console = Console.new
+          console.draw_board(board)
           msg += $stdout.string
+          $stdout = orig_stdout
+
           return msg
         })
-        # Restore stdout for our progress display (and for the last iteration...)
-        $stdout = orig_stdout
         print "\b"
       end
       print " "
@@ -127,9 +129,6 @@ describe AI do
       bender = AI.new('Bender')
       c3p0 = AI.new('C3P0')
 
-      # Hide game output.
-      $stdout = File.new('/dev/null', 'w')
-
       for moves in games_ai_lost
         for i in 0..100
           board = Board.new
@@ -139,7 +138,8 @@ describe AI do
           game = Game.new(
             bender,
             c3p0,
-            board
+            board,
+            MockUI.new
           )
           game.run
           expect(game.draw_game).to eq true

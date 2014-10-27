@@ -1,9 +1,11 @@
 
 
 class App
-  def initialize
-    UI.msg("Welcome to Tic Tac Toe!")
-    choice = UI.prompt(
+  def initialize(ui)
+    @ui = ui
+
+    @ui.msg("Welcome to Tic Tac Toe!")
+    choice = @ui.prompt(
       "Who is human, #{Board::PLAYER_ONE_TOKEN} or #{Board::PLAYER_TWO_TOKEN}?",
       [Board::PLAYER_ONE_TOKEN, Board::PLAYER_TWO_TOKEN]
     )
@@ -11,18 +13,19 @@ class App
   end
 
   def run
-    UI.msg("")
+    @ui.msg("")
     
     playerX, playerO = create_players()
 
     game = Game.new(
       playerX,
       playerO,
-      Board.new
+      Board.new,
+      @ui
     )
     game.run
 
-    choice = UI.prompt("Would you like to play again?  (y/n)", ['y', 'n'])
+    choice = @ui.prompt("Would you like to play again?  (y/n)", ['y', 'n'])
     run() if choice == 'y'
   end
 
