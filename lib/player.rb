@@ -12,11 +12,7 @@ class Player
 
 
   # Public Methods
-
-  def draw
-    @ui.msg("Name: #{@name}")
-  end
-
+  # None at present.
 
 
   # "Interface" Methods
