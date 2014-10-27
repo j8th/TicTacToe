@@ -21,9 +21,10 @@ class Player
 
   # "Interface" Methods
 
-  # The player makes a move on the board.
-  # This method drops a piece on the board (the board object is actually changed).
-  def move(board, ui)
+  # Get the move for the player for the given board.
+  # Should return an integer indicating where the player chose to move.
+  # Should return nil if the board is a game that is over (either player has won, or the game is a draw).
+  def get_move(board, ui)
     raise NotImplementedError, "Implement this method in a child class."
   end
 

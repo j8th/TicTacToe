@@ -18,7 +18,8 @@ class Game
     piece = @playerup == @playerX ? Board::PLAYER_ONE_TOKEN : Board::PLAYER_TWO_TOKEN
     @ui.msg("#{@playerup.name} (#{piece}) is up.")
 
-    @playerup.move(@board, @ui)
+    spot = @playerup.get_move(@board, @ui)
+    @board.drop_piece(spot)
     # This blank line makes the game output a bit easier to read.
     @ui.msg("")
 

@@ -96,6 +96,10 @@ class Board
     false
   end
 
+  def game_over?
+    x_wins? or o_wins? or draw_game?
+  end
+
   def full?
     if get_open_spots().count < 1
       return true
