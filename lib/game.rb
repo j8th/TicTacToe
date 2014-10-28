@@ -1,6 +1,3 @@
-
-require_relative 'ui'
-
 class Game
 
   def initialize(playerX, playerO, board, ui)

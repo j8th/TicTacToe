@@ -1,7 +1,7 @@
 # A mock UI that will output nothing.
 # Useful for testing.
 
-class MockUI < UI
+class MockUI
   # Display a text message to the user.
   def msg(string)
     
