@@ -31,8 +31,8 @@ class App
 
   private
   def create_players
-    human = Human.new('Fry')
-    computer = AI.new('Bender')
+    human = Human.new
+    computer = AI.new
     if @human_is_X
       playerX = human
       playerO = computer

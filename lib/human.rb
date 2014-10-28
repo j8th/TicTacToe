@@ -1,8 +1,4 @@
-
-
-require_relative 'player'
-
-class Human < Player
+class Human
 
   def get_move(board, ui)
     return nil if board.game_over?

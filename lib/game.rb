@@ -16,7 +16,7 @@ class Game
 
   def run
     piece = @playerup == @playerX ? Board::PLAYER_ONE_TOKEN : Board::PLAYER_TWO_TOKEN
-    @ui.msg("#{@playerup.name} (#{piece}) is up.")
+    @ui.msg("#{piece} is up.")
 
     spot = @playerup.get_move(@board, @ui)
     @board.drop_piece(spot)
@@ -24,9 +24,9 @@ class Game
     @ui.msg("")
 
     if @board.x_wins?
-      @ui.msg("Congratulations to #{@playerX.name} for defeating #{@playerO.name}!")
+      @ui.msg("X Wins!")
     elsif @board.o_wins?
-      @ui.msg("Congratulations to #{@playerO.name} for defeating #{@playerX.name}!")
+      @ui.msg("O Wins!")
     elsif @board.draw_game?
       @ui.msg("Game is a draw.")
     else

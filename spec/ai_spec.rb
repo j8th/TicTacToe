@@ -61,8 +61,8 @@ describe AI do
       display_counter = 0
       msg = "   Testing AI Invincibility.  Please wait, this may take some time...  "
       print msg
-      bender = AI.new('Bender')
-      c3p0 = AI.new('C3P0')
+      bender = AI.new
+      c3p0 = AI.new
 
       # I'd say 1,000 games is probably enough...
       # Until we make the minimax algorithm more efficient, these games take a long time to play...
@@ -126,8 +126,8 @@ describe AI do
         #[3, 4, 0, 2, 6, 7, 1], # AI randomly chose 7.  If I choose 1 to block, then I have two ways to get 3 in a row and have won.
         #[3, 4, 0, 2, 6] # AI took 8.  Right now it chooses randomly in this situation, which is not okay.
       ]
-      bender = AI.new('Bender')
-      c3p0 = AI.new('C3P0')
+      bender = AI.new
+      c3p0 = AI.new
 
       for moves in games_ai_lost
         for i in 0..100
