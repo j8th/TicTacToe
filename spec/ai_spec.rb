@@ -1,10 +1,10 @@
 
 
-require 'ai'
+require 'players/ai'
 require 'board'
 require 'game'
 require 'mocks/mockui'
-require 'console'
+require 'ui/console'
 
 describe AI do
 
