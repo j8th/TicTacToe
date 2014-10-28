@@ -1,5 +1,5 @@
-require 'game'
+require 'ui/console'
 
-describe Game do
+describe Console do
   # Nothing so far
 end
