@@ -1,10 +1,10 @@
 class AI
 
-  def get_move(board, ui)
-    return nil if board.game_over?
+  def get_move(board, rules, ui)
+    return nil if rules.game_over?(board)
 
     ui.msg("Thinking...")
-    minimax(board)
+    minimax(board, rules)
 
     @choice
   end
@@ -12,17 +12,17 @@ class AI
 
 
   private
-  def minimax(board)
-    return 1 if board.x_wins?
-    return -1 if board.o_wins?
-    return 0 if board.draw_game?
+  def minimax(board, rules)
+    return 1 if rules.x_wins?(board)
+    return -1 if rules.o_wins?(board)
+    return 0 if rules.draw_game?(board)
 
     scores = {}
 
     board.get_open_spots.each do |spot|
       board_copy = Marshal.load(Marshal.dump(board))
       board_copy.drop_piece(spot)
-      scores[spot] = minimax(board_copy)
+      scores[spot] = minimax(board_copy, rules)
     end
 
     if board.playerX_is_up?

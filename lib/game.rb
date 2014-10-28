@@ -1,9 +1,10 @@
 class Game
 
-  def initialize(playerX, playerO, board, ui)
+  def initialize(playerX, playerO, board, rules, ui)
     @playerX = playerX
     @playerO = playerO
     @board = board
+    @rules = rules
     @ui = ui
 
     @playerup = @playerX
@@ -15,16 +16,16 @@ class Game
     piece = @playerup == @playerX ? Board::PLAYER_ONE_TOKEN : Board::PLAYER_TWO_TOKEN
     @ui.msg("#{piece} is up.")
 
-    spot = @playerup.get_move(@board, @ui)
+    spot = @playerup.get_move(@board, @rules, @ui)
     @board.drop_piece(spot)
     # This blank line makes the game output a bit easier to read.
     @ui.msg("")
 
-    if @board.x_wins?
+    if @rules.x_wins?(@board)
       @ui.msg("X Wins!")
-    elsif @board.o_wins?
+    elsif @rules.o_wins?(@board)
       @ui.msg("O Wins!")
-    elsif @board.draw_game?
+    elsif @rules.draw_game?(@board)
       @ui.msg("Game is a draw.")
     else
       @playerup = @playerup == @playerX ? @playerO : @playerX
@@ -37,15 +38,15 @@ class Game
   end
 
   def draw_game?
-    @board.draw_game?
+    @rules.draw_game?(@board)
   end
 
   def x_wins?
-    @board.x_wins?
+    @rules.x_wins?(@board)
   end
 
   def o_wins?
-    @board.o_wins?
+    @rules.o_wins?(@board)
   end
 
 end

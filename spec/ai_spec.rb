@@ -2,6 +2,7 @@
 
 require 'players/ai'
 require 'board'
+require 'rules'
 require 'game'
 require 'mocks/mockui'
 require 'ui/console'
@@ -63,6 +64,7 @@ describe AI do
       print msg
       bender = AI.new
       c3p0 = AI.new
+      rules = Rules.new
 
       # I'd say 1,000 games is probably enough...
       # Until we make the minimax algorithm more efficient, these games take a long time to play...
@@ -71,7 +73,7 @@ describe AI do
         print display[display_counter]
         display_counter = display_counter + 1 > 3 ? 0 : display_counter + 1
         board = Board.new
-        game = Game.new(bender, c3p0, board, MockUI.new)
+        game = Game.new(bender, c3p0, board, rules, MockUI.new)
         game.run
         expect(game.draw_game?).to(eq(true), 
         lambda {

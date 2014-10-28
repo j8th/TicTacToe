@@ -1,7 +1,8 @@
 
 
 class App
-  def initialize(ui)
+  def initialize(rules, ui)
+    @rules = rules
     @ui = ui
 
     @ui.msg("Welcome to Tic Tac Toe!")
@@ -21,6 +22,7 @@ class App
       playerX,
       playerO,
       Board.new,
+      @rules,
       @ui
     )
     game.run

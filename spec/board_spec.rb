@@ -79,31 +79,6 @@ describe Board do
     end
   end
 
-  describe '#x_wins' do
-    it 'Should return true only if PlayerX won the board.' do
-      board = Board.new
-      expect(board.x_wins?).to eq false
-
-      x_wins_game_moves.each do |i|
-        board.drop_piece(i)
-        expect(board.x_wins?).to eq false unless i == x_wins_game_moves.last
-        expect(board.x_wins?).to eq true if i == x_wins_game_moves.last
-      end
-    end
-  end
-
-  describe '#o_wins' do
-    it 'Should return true only if PlayerO won the board.' do
-      board = Board.new
-      expect(board.o_wins?).to eq false
-
-      o_wins_game_moves.each do |i|
-        board.drop_piece(i)
-        expect(board.o_wins?).to eq false unless i == o_wins_game_moves.last
-        expect(board.o_wins?).to eq true if i == o_wins_game_moves.last
-      end
-    end
-  end
 
   describe '#get_all_pieces' do
     it 'Should return all the X\'s and O\'s on the board and ONLY the X\'s and O\'s' do
