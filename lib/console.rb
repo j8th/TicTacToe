@@ -1,4 +1,4 @@
-class Console < UI
+class Console
   # Display a text message to the user.
   def msg(string)
     puts string
